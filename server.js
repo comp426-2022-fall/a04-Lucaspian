@@ -18,9 +18,6 @@ app.get("/app/", (req,res) => {
     res.send("200 OK");
 });
 
-app.get("/app/roll/", (req,res) => {
-    res.send(roll(6, 2, 1));
-});
 
 app.get("/app/roll/", (req,res) => {
     res.send(roll(6, 2, 1));
@@ -41,8 +38,11 @@ app.get('/app/roll/:sides/:dice/', (req, res) => {
     res.send(roll(parseInt(req.params.sides), parseInt(req.params.dice), 1));
 })
 
-app.get('/app/roll/:sides/:dice/:rolls/', (req, res) => {
-    res.send(roll(parseInt(req.params.sides), parseInt(req.params.dice), parseInt(req.params.rolls)));
+app.get('/app/roll/:sides/:dice/:rolls', (req, res) => {
+    const sides = parseInt(req.params.sides)
+    const dice = parseInt(req.params.dice)
+    const rolls = parseInt(req.params.rolls)
+    res.send(roll(sides, dice, rolls))
 })
 
 app.get("*", (req,res) => {
